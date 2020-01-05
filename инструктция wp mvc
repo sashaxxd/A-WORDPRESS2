@@ -1,0 +1,36 @@
+Создание плагина
+
+Переходим из командрой строки к плагину для генереации
+
+cd wp-content\plugins\wp-mvc
+
+
+Генерируем плагин - кемел кейс
+
+wpmvc generate plugin MyPlugin
+
+
+Генерируем модель вид контроллер
+
+wpmvc generate scaffold MyPlugin MyVenue
+
+
+Перед активацие плагина создаем базу - в плагине файл my_plugin_loader.php
+туда дописываем код
+
+http://wpmvc.org/documentation/creating_database_tables.html
+
+
+global $wpdb;
+
+$sql = '
+CREATE TABLE '. $wpdb->prefix . 'animelists (
+  id int(11) NOT NULL auto_increment,
+  title varchar(255) NOT NULL,
+  poster varchar(255) NOT NULL,
+  plot TEXT NOT NULL,
+  genres TEXT default NULL,
+  PRIMARY KEY  (id)
+)';
+
+dbDelta($sql);

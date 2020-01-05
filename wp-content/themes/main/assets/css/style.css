@@ -1,0 +1,265 @@
+@font-face {
+    font-family: "Idealist Sans";
+    src: url('../fonts/Idealist.ttf') format('truetype');
+}
+@font-face {
+    font-family: IdealistSans-Light;
+    src: url('../fonts/Idealist-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: "Idealist Sans Light";
+    src: url('../fonts/Idealist-Light.ttf') format('truetype');
+}
+
+#container_menu{
+    max-width: 1280px;
+}
+#wb_container_menu{
+    min-width: 100%;
+}
+#header, #head_line_count{
+    max-width: 1280px;
+}
+
+
+/**
+Иконки тел, почта
+ */
+#wb_email_img, #wb_email_img_f{
+    position: absolute;
+    left: 0px;
+    top: 10px;
+}
+#wb_email_header, #wb_email_footer{
+    float: right;
+}
+#wb_phone_img, #wb_phone_img_f{
+    position: relative;
+    left: 30px;
+    top: 10px;
+}
+#wb_phone_header, #wb_phone_footer{
+    float:right;
+}
+
+#wb_email_cont_h, #wb_phone_cont_h, #wb_email_cont_f, #wb_phone_cont_f{
+    max-width: 250px;
+    float: right;
+}
+
+
+/**
+Для мобил
+ */
+@media (max-width: 1023px) {
+    #search{
+        margin-bottom: 30px;
+    }
+}
+
+/**
+Прикольная кнопка
+ */
+.button_m {
+
+
+    border-radius: 3px;
+    background: #F3B50A;
+    box-shadow: 0 -3px #F3B50A inset;
+    transition: 0.2s;
+}
+.button_m:hover { background: #F3B50A; }
+.button_m:active {
+    background: #F3B50A;
+    box-shadow: 0 3px #F3B50A inset;
+}
+
+.button_m:active, .button_m:focus {
+    outline: none;
+}
+.button_m::-moz-focus-inner {
+    border: 0;
+}
+/**
+Другие стили
+ */
+#catalog_cont{
+    max-width: 1280px;
+}
+.line_block{
+    width: 100%;
+    height: 1px;
+    background-color: #808080;
+}
+#title_form, #form_gl_container, #form_bott, #zad_title, #zad_block1, #catalog_cont, #zad_block2, #main_footer{
+    max-width: 1280px;
+}
+
+#block_h1 .row {
+    background-color: #DCDCDC;
+    padding: 20px;
+    /*min-height: 200px;*/
+}
+
+#block_h2 .row {
+    background-color: #DCDCDC;
+    padding: 20px;
+    /*min-height: 200px;*/
+}
+
+/**
+Поле поиска
+ */
+#search {
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 4px 0 0 4px;
+    width: 260px;
+    z-index: 10;
+    float: left;
+
+}
+.search {
+    margin-top: 8px;
+    width: 300px; /* Ширина поля с кнопкой */
+    height: 36px;
+    background-color: #F3B50A;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.search input[type="text"] {
+    border: none; /* Убираем рамку */
+    outline: none; /* Убираем свечение в Chrome и Safari */
+    -webkit-appearance: none; /* Убираем рамку в Chrome и Safari */
+    width: 170px; /* Ширина поля */
+    vertical-align: middle; /* Выравнивание по середине */
+}
+.search input[type="submit"] {
+    position: relative;
+    width: 20px; /* Ширина кнопки */
+    height: 20px; /* Высота кнопки */
+    border: none; /* Убираем рамку */
+    background: url(../images/lupa.png) no-repeat 50% 50%; /* Параметры фона */
+    top: 8px;
+    cursor: pointer;
+}
+
+/**
+Иконка меню
+ */
+#menu-icon {
+    display: block;
+    left: 17px;
+    position: absolute;
+    top: 14px;
+}
+#menu-icon span {
+    background-color: #fff;
+    color: #fff;
+    display: block;
+    height: 4px;
+    margin-top: 4px;
+    width: 24px;
+}
+/**
+Кнопка закрыть на модалке
+ */
+
+#modal_window .close {
+    -webkit-appearance: none;
+    background: 0 0;
+    border: 0;
+    color: #ED6827;
+    cursor: pointer;
+    /*filter: alpha(opacity=99);*/
+    float: right;
+    font-size: 41px;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: -10px;
+    opacity: 1;
+    padding: 15px 15px 0px 0px;
+    text-shadow: 0px 1px 0px #fff;
+}
+
+/**
+
+ */
+#toTop {
+    position: fixed;
+    bottom: 0;
+    right: 90px;
+    border-radius: 8px 8px 0 0;
+    display:none;
+
+}
+
+/**
+Стили уведомлений Contact form 7
+ */
+div.wpcf7-response-output {
+    margin: 2em 0.5em 1em;
+    padding: 0.2em 1em;
+}
+
+div.wpcf7-mail-sent-ok {
+    border: 2px solid #000;
+}
+
+div.wpcf7-mail-sent-ng {
+    border: 2px solid #000;
+}
+
+div.wpcf7-spam-blocked {
+    border: 2px solid #000;
+}
+
+div.wpcf7-validation-errors {
+    border: 2px solid #000;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+/**
+Стили уведомления Contact form 7
+ */
+.wpcf7-response-output {
+    display: none !important;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html,
+body {
+    height: 100%;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+.content {
+    flex: 1 0 auto;
+}
+.footer {
+    flex: 0 0 auto;
+}
+
+
+.page-numbers {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 2px 0 0;
+    border: 1px solid #eee;
+    line-height: 1;
+    text-decoration: none;
+    border-radius: 2px;
+    font-weight: 600;
+}
+.page-numbers.current,
+a.page-numbers:hover {
+    background: #f9f9f9;
+    color: #296029;
+}
