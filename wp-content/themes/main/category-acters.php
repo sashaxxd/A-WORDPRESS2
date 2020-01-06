@@ -2,7 +2,7 @@
     <div class="content">
 <?php get_header(); ?>
 
-        <div id="main-content">
+
 <div id="acters_LayoutGrid8">
     <div id="LayoutGrid8">
         <div class="row">
@@ -23,61 +23,47 @@
         </div>
     </div>
 </div>
+
+
+        <div id="main-content">
 <div id="acters_catalog_cont">
     <div id="catalog_cont">
         <div class="row">
             <div class="col-1">
                 <div id="acters_Text17">
-                    <span id="acters_uid1">АКТЕРЫ ВО ВСЕ ТЯЖКИЕ   <?php
+                    <span id="acters_uid1">АКТЕРЫ ВО ВСЕ ТЯЖКИЕ</span>
 
-//                        echo STYLESHEETPATH . "/assets/css/single-acters.css";
-                        ?></span>
-<!--                    --><?php
-//                    // вытаскиваем все рубрики в массив $categories, описание параметров функции смотрите чуть ниже
-//                    $categories = get_terms('category', 'orderby=name&hide_empty=0');
-//
-//                    // если рубрики, соответствующие заданным параметрам, существуют,
-//                    if($categories){
-//
-//                        // тогда создаем выпадающий список из них
-//                        echo '<select>';
-//
-//                        // обращаемся к каждому объекту массива (в данном случае рубрика)
-//                        foreach ($categories as $cat){
-//
-//                            // выводим элемент списка, где атрибут value равен ID рубрики, а $cat->name - название рубрики
-//                            echo "<option value='{$cat->term_id}'>{$cat->name}</option>";
-//                        }
-//                        echo '</select>';
-//                    }
-//                    ?>
 
                     <div id="filters_f" style="padding: 5px;">
                     <form
 
                           method="GET" id="filter">
-<!--                        --><?php //$terms = get_term(2);
-//                         Debug($terms)?>
-<!--                        --><?php
-//                        if( $terms = get_terms( array( 'taxonomy' => 'category', 'orderby' => 'name' ) ) ) :
-//
-//                            echo '<select name="categoryfilter" style="border: 1px solid #296029;"><option value="">Выбор категории...</option>';
-//                            foreach ( $terms as $term ) :
-//                                echo '<option value="' . $term->term_id . '">' . $term->name . '</option>'; // ID of the category as the value of an option
-//                            endforeach;
-//                            echo '</select>';
-//                        endif;
-//                        ?>
-                        <input type="hidden" name="category" value="<?php
-                        $category = get_queried_object();
-                        echo $category->term_id;
-                        ?>"/>
+                        <?php
+                        $meta_ves = get_meta_values( 'ves', 'post' );
+                         ?>
 
-                        <input type="text" name="ves" placeholder="Bес" style="border: 1px solid #296029;"
-                               <?php if(isset($_GET['ves'])):?>
-                               value="<?= $_GET['ves'] ?>"
-                               <?php endif; ?>
-                        />
+                          <select name="ves" style="border: 1px solid #296029;"><option value="">Выбор веса...</option>
+                        <?php  foreach ($meta_ves as $value ) : ?>
+                                <option value="<?= $value ?>"
+
+                                    <?php if(isset($_GET['ves']) && $_GET['ves'] == $value):?>
+                                        selected
+                                    <?php endif; ?>
+
+                                > <?= $value ?> </option>
+                         <?php  endforeach; ?>
+                           </select>
+
+<!--                        <input type="hidden" name="category" value="--><?php
+//                        $category = get_queried_object();
+//                        echo $category->term_id;
+//                        ?><!--"/>-->
+
+<!--                        <input type="text" name="ves" placeholder="Bес" style="border: 1px solid #296029;"-->
+<!--                               --><?php //if(isset($_GET['ves'])):?>
+<!--                               value="--><?//= $_GET['ves'] ?><!--"-->
+<!--                               --><?php //endif; ?>
+<!--                        />-->
 <!--                        <input type="text" name="price_min" placeholder="Минимальный вес" style="border: 1px solid #296029;"/>-->
 <!--                        <input type="text" name="price_max" placeholder="Максимальный вес" style="border: 1px solid #296029;"/>-->
                         <label>
@@ -125,22 +111,17 @@
         <div class="row">
 
                 <?php
-                global $wp_query;
-
                 $i = 0;
 
+                global $wp_query;
 
-
+                /**
+                 * Для выборки по $_GET
+                 */
                 $args = array(
-                    'orderby' => 'date', // we will sort posts by date
-                    'order'	=> $_GET['date'] // ASC or DESC
+                    'orderby' => 'date',
+                    'order'	=> $_GET['date']
                 );
-
-
-
-
-
-
 
                 $args['posts_per_page'] = '2';
                 $args['category_name'] = 'acters';
@@ -152,8 +133,7 @@
                     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                 }
                 $args['paged'] = $paged;
-//                echo 'Мы находимся на странице: '. $paged;
-                /*Чтобы работала штатная пагинация надо в массив запрос добавить параметр 'paged'=>$paged*/
+
 
                 if( isset( $_GET['ves'] ) && $_GET['ves'] > 0) {
                     $args['meta_query'] = array(
@@ -164,12 +144,7 @@
                     );
                 }
 
-               // $args = ['category_name' => 'actersu', 'orderby' => 'date', 'order' => 'DESC',  'paged' => $paged, 'posts_per_page' => '2',];
-
                     $wp_query = new WP_Query($args);
-
-
-
 
                 ?>
 
@@ -190,12 +165,7 @@
                     </div>
                 </div>
                 <div id="acters_Shape1">
-<!--                    <div class="sfd" style="color: green; font-size: 20px;">-->
-<!---->
-<!--                        --><?php //the_field("photo_act", get_the_ID()); ?>
-<!--                    </div>-->
                     <div id="Shape1" style="background-image: url(<?php the_field("photo_act", get_the_ID()); ?>);">
-<!--                        <img src=" --><?php //the_field("photo_act", get_the_ID()); ?><!--" alt="" style="width: 90px;">-->
                     </div>
                 </div>
                 <div id="acters_cat_bl1">
@@ -218,7 +188,7 @@
                 <?php endwhile; ?>
                 <?php else: ?>
 
-<!--                --><?php //wp_reset_query(); ?>
+                <?php wp_reset_query(); ?>
                 <?php endif; ?>
 
         </div>
@@ -239,13 +209,7 @@
         );
 
         the_posts_pagination( $args ); ?>
-
-<!--        <div class="pagination">-->
-<!--            <ul>-->
-<!--                <li class="nav-previous">--><?php //next_posts_link( '← ' . 'Предыдущие' ); ?><!--</li>-->
-<!--                <li class="nav-next">--><?php //previous_posts_link( 'Следующие' . ' →' ); ?><!--</li>-->
-<!--            </ul>-->
-<!--        </div>-->
+        <!-- !Пагинация -->
 
     </div>
 
